@@ -86,6 +86,11 @@ if int(biasedExp) == 255 and int(binToDeci(mantissa)) == 0:
     print("+Inf")
   exit()
 
+# check NaN
+if int(biasedExp) == 255 and int(binToDeci(mantissa)) > 0:
+  print("NaN")
+  exit()
+
 unbiasedExp = unBias127(biasedExp)
 print("unbiased exponent:", unbiasedExp)
 
@@ -104,3 +109,4 @@ finalFpResult = fpBinToDeci(newBinFp)
 if signbit == "1":
   finalFpResult = "-" + finalFpResult
 print("final convertion result:", finalFpResult)
+

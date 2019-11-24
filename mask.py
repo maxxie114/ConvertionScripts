@@ -1,4 +1,5 @@
 # This program will convert both IP address and mask to binary and then get the network address
+# This script is incomplete
 def deciToBinary(num):
   r = 1
   ans = 1
