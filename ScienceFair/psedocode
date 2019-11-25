@@ -1,0 +1,88 @@
+OOP might be required
+
+Init
+Get a list of password hashes that contains 3 passwords for each type of password from a text file
+Initialize given_password
+Initialize start_time
+Initialize is_success = false
+
+Loop given_passwords:    
+    Run method 1
+    If method 1 return true: 
+reset start_time
+Is_success = true
+    Else: 
+run method 2
+ 	If method 2 return true: 
+reset start_time
+Is_success = true
+	Else:
+		Run method 3
+		If method 3 return true: 
+reset start_time
+Is_success = true
+		Else: 
+			Run method 4
+			If method 4 return true: 
+reset start_time
+Is_success = true
+Else
+	Run method5
+	If method 5 return true: 
+reset start_time
+Is_success = true
+
+
+
+    If not is_success == true: 
+        log “failed to crack password: index of List"
+
+
+
+
+
+1 List of common password:
+Provide 3 different common password list
+Read them all into three different List variables
+Loop through them one by one and hash them, and compare it with the given password hash
+If found: log "cracked by <method>, time_used", break the loop
+
+
+2 Number password:
+Loop from 1000 to 10000000000(11 digits) and compare it with the given password hash
+If found: log "cracked by <method>, time_used", break the loop
+If not found: add 0 before it and do the same process from 100 to 1000000000(10 digits)
+If not found: add 2 0s before it and do the same process from 10 to 100000000(9 digits)
+Repeat until 4 0s are added to the front, and then break the loop
+
+3 Word list password(include complex word of two words)
+Loop through a word list, compare with the given password hash
+If found: log "cracked by <method>, time_used", break the loop
+Else: 
+	Loop i over the wordlist
+		Loop j over the word list
+			compare hash of i+j with given password hash
+			If found: log "cracked by <method>, time_used", break the loop
+	Break the loop
+
+
+
+
+4 Mix case password
+Infinite loop
+Randomly select from “ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz” and get a random password of no more than 15 letters
+Compare with the given password hash
+If found: log "cracked by <method>, time_used", break the loop
+Check time, if time exceeds 3 hours, break the loop
+
+
+5 Complex password
+Infinite loop 
+Randomly select from “ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890+_)(*&^%$#@!~{}|\][‘;:”/.,<>?” and get a random password of no more than 15 letters
+Compare with the given password hash
+If found: log "cracked by <method>, time_used", break the loop
+Check time, if time exceeds 3 hours, break the loop
+
+
+
+

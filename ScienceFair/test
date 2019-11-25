@@ -1,0 +1,15 @@
+#!/bin/bash
+# This code will test whether the hashed value is the same with the original value
+i=0
+cat passwordListVisible.txt | while read line
+do
+j=$(echo -n $line | sha256sum)
+k=$(cat passwordList.txt | head -n $((i+1)) | tail -1)
+if [[ $j == $k ]]
+  then
+  echo "true"
+else
+  echo "false"
+fi
+i=$((i+1))
+done

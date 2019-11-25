@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Random generation of the three of the type 1 passwords
+T1PW1=$(shuf -n 1 commonPW1.txt)
+T1PW2=$(shuf -n 1 commonPW2.txt)
+T1PW3=$(shuf -n 1 commonPW3.txt)
+echo -n $T1PW1 | sha256sum >> passwordList.txt
+echo -n $T1PW2 | sha256sum >> passwordList.txt
+echo -n $T1PW3 | sha256sum >> passwordList.txt
+# These plain text are used as a Control group
+echo $T1PW1 >> passwordListVisible.txt
+echo $T1PW2 >> passwordListVisible.txt
+echo $T1PW3 >> passwordListVisible.txt
+# Random generation of the three of the type 2 passwords
+T2PW1=$(python -S -c "import random; print random.randint(1000,100000000)")
+T2PW2=$(echo -n "0"$(python -S -c "import random; print random.randint(1000,100000000)"))
+T2PW3=$(echo -n "00"$(python -S -c "import random; print random.randint(1000,100000000)"))
+echo -n $T2PW1 | sha256sum >> passwordList.txt
+echo -n $T2PW2 | sha256sum >> passwordList.txt
+echo -n $T2PW3 | sha256sum >> passwordList.txt
+echo $T2PW1 >> passwordListVisible.txt
+echo $T2PW2 >> passwordListVisible.txt
+echo $T2PW3 >> passwordListVisible.txt
+# Random generation of the three of the type 3 passwords
+T3PW1=$(shuf -n 1 wordList.txt | awk '{print tolower($0)}')
+T3PW2=$(shuf -n 1 wordList.txt | awk '{print tolower($0)}')
+T3PW3=$(shuf -n 1 wordList.txt | awk '{print tolower($0)}')
+echo -n $T3PW1 | sha256sum >> passwordList.txt
+echo -n $T3PW2 | sha256sum >> passwordList.txt
+echo -n $T3PW3 | sha256sum >> passwordList.txt
+echo $T3PW1 >> passwordListVisible.txt
+echo $T3PW2 >> passwordListVisible.txt
+echo $T3PW3 >> passwordListVisible.txt
+# Random generation of the three of the type 4 passwords
+T4PW1=$(< /dev/urandom tr -dc 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' | head -c${1:-7}) # >> passwordList.txt
+T4PW2=$(< /dev/urandom tr -dc 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' | head -c${1:-10}) # >> passwordList.txt
+T4PW3=$(< /dev/urandom tr -dc 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' | head -c${1:-15}) # >> passwordList.txt
+echo -n $T4PW1 | sha256sum >> passwordList.txt
+echo -n $T4PW2 | sha256sum >> passwordList.txt
+echo -n $T4PW3 | sha256sum >> passwordList.txt
+echo $T4PW1 >> passwordListVisible.txt
+echo $T4PW2 >> passwordListVisible.txt
+echo $T4PW3 >> passwordListVisible.txt
+# Random generation of the three of the type 5 passwords
+T5PW1=$(< /dev/urandom tr -dc '@#$%&-_=+1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' | head -c${1:-15}) # >> passwordList.txt
+T5PW2=$(< /dev/urandom tr -dc '@#$%&-_=+1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' | head -c${1:-9}) # >> passwordList.txt
+T5PW3=$(< /dev/urandom tr -dc '@#$%&-_=+1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' | head -c${1:-7}) # >> passwordList.txt
+echo -n $T5PW1 | sha256sum >> passwordList.txt
+echo -n $T5PW2 | sha256sum >> passwordList.txt
+echo -n $T5PW3 | sha256sum >> passwordList.txt
+echo $T5PW1 >> passwordListVisible.txt
+echo $T5PW2 >> passwordListVisible.txt
+echo $T5PW3 >> passwordListVisible.txt
