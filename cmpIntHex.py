@@ -17,6 +17,7 @@ for i in argLst:
   newLst.append(int(i,16))
 
 # sort
+# This algorithm have a problem
 sortedLst = []
 min = newLst[0]
 for i in range(len(newLst)):
