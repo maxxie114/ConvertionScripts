@@ -108,5 +108,5 @@ finalFpResult = fpBinToDeci(newBinFp)
 # check sign
 if signbit == "1":
   finalFpResult = "-" + finalFpResult
-print("final convertion result:", finalFpResult)
+print("final conversion result:", finalFpResult)
 
